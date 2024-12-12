@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works</title>
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://wallpaperaccess.com/full/3648424.jpg'); /* Replace with your background image URL */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .header {
+            padding: 100px 20px 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .header p {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            color: white;
+        }
+
+        .container h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #00bfff;
+        }
+
+        .container p {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .container .step {
+            margin-bottom: 30px;
+        }
+
+        .footer {
+            text-align: center;
+            margin: 30px 0;
+            color: #ccc;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="login.html">Home</a>
+    </nav>
+
+    <!-- Header Section -->
+    <div class="header">
+        <h1>How It Works</h1>
+        <p>Understanding the Workflow of PATHRIKA</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Step 1 -->
+        <div class="step">
+            <h2>Step 1: Login and Role-Based Authentication</h2>
+            <p>Users log in with their credentials. Based on their role (Admin, Teacher, or Superintendent), they are granted specific permissions.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step">
+            <h2>Step 2: Admin Requests Question Papers</h2>
+            <p>The Admin sends a request to Teachers to prepare question papers for specific subjects and schedules.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step">
+            <h2>Step 3: Teachers Upload Question Papers</h2>
+            <p>Teachers receive the requests and upload the question papers in PDF format, securely stored on IPFS (InterPlanetary File System).</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step">
+            <h2>Step 4: Hash Code Generation and Blockchain Storage</h2>
+            <p>A unique hash code is generated for each uploaded question paper and stored on the blockchain, ensuring tamper-proofing and security.</p>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step">
+            <h2>Step 5: Time-Based Access for Superintendents</h2>
+            <p>The Superintendent can request access to the question papers, but the system reveals the hash code only after the pre-defined schedule.</p>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="step">
+            <h2>Step 6: Secure Retrieval of Question Papers</h2>
+            <p>The Superintendent uses the hash code to securely retrieve the question papers from IPFS, ensuring integrity and confidentiality.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2024 PATHRIKA. All rights reserved.
+    </div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superintendent Dashboard</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+        }
+
+        .container {
+            width: 400px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            font-size: 14px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Superintendent Dashboard</h2>
+        
+        <div class="form-group">
+            <label for="uniqueCode">Enter Unique Code:</label>
+            <input type="text" id="uniqueCode" name="uniqueCode" required>
+        </div>
+        <button id="fetchPaperButton">Fetch</button>
+    </div>
+
+    <script>
+        document.getElementById('fetchPaperButton').addEventListener('click', function() {
+            const uniqueCode = document.getElementById('uniqueCode').value;
+
+            if (!uniqueCode) {
+                alert("Please enter a unique code.");
+                return;
+            }
+
+            // Make a fetch request to the backend to get the PDF
+            fetch(`/fetch_pdf/${uniqueCode}`, {
+                method: 'GET',
+            })
+            .then(response => {
+                if (response.ok) {
+                    // If the response is OK, meaning the paper is released and available
+                    return response.blob();  // Get the file data as a blob
+                } else if (response.status === 400) {
+                    throw new Error("Question paper not released yet.");
+                } else {
+                    throw new Error("Error fetching the question paper.");
+                }
+            })
+            .then(blob => {
+                // Create a link element for downloading the PDF
+                const downloadLink = document.createElement('a');
+                downloadLink.href = window.URL.createObjectURL(blob);
+                downloadLink.download = `${uniqueCode}.pdf`;  // Set the downloaded filename
+                downloadLink.click();  // Simulate a click to trigger the download
+            })
+            .catch(error => {
+                alert(error.message);  // Display the error message if the paper is not found or not released
+            });
+        });
+    </script>
+</body>
+</html>

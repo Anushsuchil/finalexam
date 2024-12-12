@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | PATHRIKA</title>
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://wallpaperaccess.com/full/3648424.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .header {
+            padding: 100px 20px 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a id="homeButton" href="#">Home</a></li>
+        </ul>
+    </nav>
+    <div class="header">
+        <h1>About PATHRIKA</h1>
+        <p>Redefining the Security of Question Papers with Blockchain and IPFS</p>
+    </div>
+    <div class="content">
+        <h2>Key Features</h2>
+        <ul>
+            <li>Secure storage and retrieval of question papers</li>
+            <li>Role-based authentication for Admins, Teachers, and Superintendents</li>
+            <li>Blockchain technology for tamper-proof records</li>
+        </ul>
+        <h2>Technologies Used</h2>
+        <p>
+            <strong>Blockchain:</strong> Ensures integrity and immutability. <br>
+            <strong>IPFS:</strong> Decentralized storage for secure and distributed file storage.
+        </p>
+    </div>
+
+    <script>
+        document.getElementById('homeButton').addEventListener('click', function () {
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>

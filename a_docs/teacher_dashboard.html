@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://wallpaperaccess.com/full/3648424.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Header Style */
+        header {
+            width: 100%;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7); /* Black background with transparency */
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10; /* Ensure the header is above other elements */
+        }
+
+        header a {
+            color: #007bff; /* Blue color for the Home link */
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        header a:hover {
+            color: white; /* White when hovered */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 8px 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow effect */
+            animation: fadeIn 1s ease-in-out;
+            text-align: center;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .container:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 10px 20px rgba(0, 0, 0, 0.4); /* Shadow intensifies on hover */
+            transform: translateY(-10px); /* Subtle hover effect */
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2, h3 {
+            color: #333;
+        }
+
+        .request-item {
+            padding: 10px;
+            background-color: #e7f3fe;
+            border: 1px solid #b3d7ff;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .request-item form {
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        button:active {
+            transform: scale(1);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        input[type="file"] {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section with Home Link -->
+    <header>
+        <a href="login.html">Home</a> <!-- Link to login page (assuming login.html is the login page) -->
+    </header>
+
+    <div class="container">
+        <h2>Teacher Dashboard</h2>
+        <h3>Requests for {{ username }}</h3>
+        {% if requests %}
+            {% for request_id in requests %}
+                <div class="request-item">
+                    <p>Request ID: {{ request_id }}</p>
+                    <form action="{{ url_for('upload_file', username=username, req_id=request_id) }}" method="post" enctype="multipart/form-data">
+                        <label for="pdfFile">Upload Question Paper (PDF):</label>
+                        <input type="file" id="pdfFile" name="pdfFile" accept=".pdf" required>
+                        <button type="submit">Upload</button>
+                    </form>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No requests found!</p>
+        {% endif %}
+    </div>
+</body>
+</html>
